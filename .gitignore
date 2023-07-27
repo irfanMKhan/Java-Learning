@@ -32,8 +32,7 @@ build/
 .vscode/
 
 ### maven ###
-.mvn
+.mvn/
 
 ### log ###
 /logs
-/src/main/resources/test.json
