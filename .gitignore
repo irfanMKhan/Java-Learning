@@ -1,4 +1,4 @@
-HELP.md
+### Basic ###
 target/
 !**/src/main/**/target/
 !**/src/test/**/target/
