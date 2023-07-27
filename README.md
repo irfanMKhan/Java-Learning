@@ -2,8 +2,7 @@
 
 ```it's only made for learning purpose.```
 
-
-# Contributer
+# Contributor
 - `Samiul`
 - `Irfan Khan`
 - `Subha`
