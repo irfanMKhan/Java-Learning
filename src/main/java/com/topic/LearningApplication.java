@@ -1,5 +1,6 @@
 package com.topic;
 
+import com.topic.leetcode.TwoSum;
 import com.topic.override.ChildClass;
 import com.topic.override.ParentClass;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +17,11 @@ public class LearningApplication {
         objectC.isFunction();
         objectP.isFunction();
 
+        TwoSum twoSum = new TwoSum();
+        int[] a = twoSum.twoSum(new int[]{1, 2, 3, 4, 5}, 6);
+        for (int b : a) {
+            System.out.println(b);
+        }
     }
 
 }
