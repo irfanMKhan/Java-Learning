@@ -3,6 +3,7 @@ package com.topic;
 import com.topic.leetcode.ProductOfArrayExceptSelf;
 import com.topic.override.ChildClass;
 import com.topic.override.ParentClass;
+import com.topic.test.MIU;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -42,6 +43,9 @@ public class LearningApplication {
         for (int b : a) {
             System.out.println(b);
         }
+
+        MIU ab = new MIU();
+        int v = ab.sumOfEvenOdd(new int[]{3,4});
     }
 
 }
