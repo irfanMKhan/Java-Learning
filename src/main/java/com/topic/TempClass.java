@@ -1,5 +1,6 @@
 package com.topic;
 
+import com.topic.leetcode.MaximumSubArray;
 import com.topic.leetcode.ProductOfArrayExceptSelf;
 import com.topic.override.ChildClass;
 import com.topic.override.ParentClass;
@@ -33,10 +34,14 @@ public class TempClass {
 //        boolean a = temp.containsDuplicate(new int[]{1, 2, 3, 4});
 //        System.out.println(a);
 
-        ProductOfArrayExceptSelf temp = new ProductOfArrayExceptSelf();
-        int[] a = temp.productExceptSelf(new int[]{1, 2, 3, 4});
-        for (int b : a) {
-            System.out.println(b);
-        }
+//        ProductOfArrayExceptSelf temp = new ProductOfArrayExceptSelf();
+//        int[] a = temp.productExceptSelf(new int[]{1, 2, 3, 4});
+//        for (int b : a) {
+//            System.out.println(b);
+//        }
+
+        MaximumSubArray temp = new MaximumSubArray();
+        int res = temp.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4});
+        System.out.println(res);
     }
 }
