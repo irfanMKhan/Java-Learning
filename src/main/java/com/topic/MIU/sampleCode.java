@@ -1,11 +1,9 @@
-package com.topic.test;
-
-import jakarta.persistence.criteria.CriteriaBuilder;
+package com.topic.MIU;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MIU {
+public class sampleCode {
 
     public int middleElement(int[] listInt) {
         int len = listInt.length;

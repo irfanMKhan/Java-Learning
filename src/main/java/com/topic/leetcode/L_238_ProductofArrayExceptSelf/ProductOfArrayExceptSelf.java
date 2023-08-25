@@ -1,4 +1,4 @@
-package com.topic.leetcode;
+package com.topic.leetcode.L_238_ProductofArrayExceptSelf;
 
 import java.util.Arrays;
 
