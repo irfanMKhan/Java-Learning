@@ -1,6 +1,6 @@
-package com.topic.leetcode.L_53_MaximumSubarray;
+package com.topic.leetcode;
 
-public class MaximumSubArray {
+public class L_53_MaximumSubarray {
     public int maxSubArray(int[] nums) {
         int maxSum = nums[1];
         int currSum = nums[1];

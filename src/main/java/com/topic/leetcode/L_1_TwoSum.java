@@ -1,9 +1,9 @@
-package com.topic.leetcode.L_1_TwoSum;
+package com.topic.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TwoSum {
+public class L_1_TwoSum {
     public int[] twoSum(int[] nums, int target) {
 
         Map<Integer, Integer> dict = new HashMap<>();

@@ -1,9 +1,9 @@
-package com.topic.leetcode.L_217_ContainsDuplicate;
+package com.topic.leetcode;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ContainsDuplicate {
+public class L_217_ContainsDuplicate {
     public boolean containsDuplicate(int[] nums) {
         Map<Integer, Integer> history = new HashMap<>();
         for (int num : nums) {

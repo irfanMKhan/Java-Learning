@@ -1,6 +1,6 @@
 package com.topic;
 
-import com.topic.leetcode.L_53_MaximumSubarray.MaximumSubArray;
+import com.topic.MIU.SampleCode;
 
 public class TestClass {
     public static void callTestFunction() {
@@ -37,8 +37,12 @@ public class TestClass {
 //            System.out.println(b);
 //        }
 
-        MaximumSubArray temp = new MaximumSubArray();
-        int res = temp.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4});
-        System.out.println(res);
+//        L_53_MaximumSubarray temp = new L_53_MaximumSubarray();
+//        int res = temp.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4});
+//        System.out.println(res);
+
+        SampleCode sampleCode = new SampleCode();
+        int res = SampleCode.reverseInteger(-456);
+        System.out.printf(String.valueOf(res));
     }
 }
