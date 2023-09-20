@@ -1,11 +1,9 @@
-package com.topic.test;
-
-import jakarta.persistence.criteria.CriteriaBuilder;
+package com.topic.MIU;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MIU {
+public class SampleCode {
 
     public int middleElement(int[] listInt) {
         int len = listInt.length;
@@ -50,5 +48,24 @@ public class MIU {
 
         return 0;
     }
+
+    public static int reverseInteger(int n)
+    {
+        int sign = 1;
+        if (n == 0) return 0;
+        if (n < 0)
+        {
+            sign = -1;
+            n = -n;
+        }
+        int reverse = 0;
+        while (n != 0)
+        {
+            reverse = (reverse * 10) + (n % 10);
+            n /= 10;
+        }
+        return sign * reverse;
+    }
+
 
 }
