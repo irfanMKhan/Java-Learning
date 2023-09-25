@@ -1,10 +1,8 @@
 package com.topic;
 
-import com.topic.leetcode.ProductOfArrayExceptSelf;
-import com.topic.override.ChildClass;
-import com.topic.override.ParentClass;
+import com.topic.MIU.SampleCode;
 
-public class TempClass {
+public class TestClass {
     public static void callTestFunction() {
 
         /*
@@ -33,10 +31,18 @@ public class TempClass {
 //        boolean a = temp.containsDuplicate(new int[]{1, 2, 3, 4});
 //        System.out.println(a);
 
-        ProductOfArrayExceptSelf temp = new ProductOfArrayExceptSelf();
-        int[] a = temp.productExceptSelf(new int[]{1, 2, 3, 4});
-        for (int b : a) {
-            System.out.println(b);
-        }
+//        ProductOfArrayExceptSelf temp = new ProductOfArrayExceptSelf();
+//        int[] a = temp.productExceptSelf(new int[]{1, 2, 3, 4});
+//        for (int b : a) {
+//            System.out.println(b);
+//        }
+
+//        L_53_MaximumSubarray temp = new L_53_MaximumSubarray();
+//        int res = temp.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4});
+//        System.out.println(res);
+
+        SampleCode sampleCode = new SampleCode();
+        int res = SampleCode.reverseInteger(-456);
+        System.out.printf(String.valueOf(res));
     }
 }

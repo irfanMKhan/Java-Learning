@@ -3,7 +3,7 @@ package com.topic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import static com.topic.TempClass.callTestFunction;
+import static com.topic.TestClass.callTestFunction;
 
 @SpringBootApplication
 public class LearningApplication {
