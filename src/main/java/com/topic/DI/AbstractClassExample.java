@@ -2,7 +2,11 @@ package com.topic.DI;
 
 public abstract class AbstractClassExample {
 
-    public AbstractClassExample(){
+    /*
+     Abstract Class Has Constructor
+     */
+    public AbstractClassExample() {
 
     }
+
 }

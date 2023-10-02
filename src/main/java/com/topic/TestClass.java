@@ -1,6 +1,8 @@
 package com.topic;
 
 import com.topic.MIU.SampleCode;
+import com.topic.override.ChildClass;
+import com.topic.override.ParentClass;
 
 public class TestClass {
     public static void callTestFunction() {
@@ -8,11 +10,11 @@ public class TestClass {
         /*
             override
          */
-//        ChildClass objectC = new ChildClass();
-//        ParentClass objectP = new ParentClass();
-//
-//        objectC.isFunction();
-//        objectP.isFunction();
+        ChildClass objectC = new ChildClass();
+        ParentClass objectP = new ParentClass();
+
+        objectC.isFunction();
+        objectP.isFunction();
 
         /*
             Leet Code

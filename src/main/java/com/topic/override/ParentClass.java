@@ -8,4 +8,5 @@ public class ParentClass {
     public void isFunction(){
         System.out.println("From Parent");
     }
+
 }
