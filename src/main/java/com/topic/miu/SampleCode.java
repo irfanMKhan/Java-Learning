@@ -1,4 +1,4 @@
-package com.topic.MIU;
+package com.topic.miu;
 
 import java.util.HashMap;
 import java.util.Map;

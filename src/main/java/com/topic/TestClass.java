@@ -1,6 +1,6 @@
 package com.topic;
 
-import com.topic.MIU.SampleCode;
+import com.topic.miu.SampleCode;
 import com.topic.override.ChildClass;
 import com.topic.override.ParentClass;
 

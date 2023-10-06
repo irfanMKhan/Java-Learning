@@ -1,4 +1,4 @@
-package com.topic.DI;
+package com.topic.di;
 
 public abstract class AbstractClassExample {
 
