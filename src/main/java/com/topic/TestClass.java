@@ -1,6 +1,7 @@
 package com.topic;
 
 import com.topic.MIU.SampleCode;
+import com.topic.leetcode.L_5_LongestPalindromicSubstring;
 
 public class TestClass {
     public static void callTestFunction() {
@@ -41,8 +42,12 @@ public class TestClass {
 //        int res = temp.maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4});
 //        System.out.println(res);
 
-        SampleCode sampleCode = new SampleCode();
-        int res = SampleCode.reverseInteger(-456);
-        System.out.printf(String.valueOf(res));
+//        SampleCode sampleCode = new SampleCode();
+//        int res = SampleCode.reverseInteger(-456);
+//        System.out.printf(String.valueOf(res));
+
+        L_5_LongestPalindromicSubstring test = new L_5_LongestPalindromicSubstring();
+        String a= test.longestPalindrome("bababd");
+        System.out.printf(a);
     }
 }
