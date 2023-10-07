@@ -1,16 +1,11 @@
 package com.topic.module.userManagement.model;
 
-
 import lombok.Data;
 
-import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 
 @Data
-@MappedSuperclass
-public abstract class AbstractEntity {
+public class AbstractDTO {
 
     private Boolean isActive;
 
@@ -36,13 +31,5 @@ public abstract class AbstractEntity {
     private LocalDateTime deletedDate;
 
     private Long longDeletedDate;
-
-    public AbstractEntity() {
-        LocalDateTime now = LocalDateTime.now();
-        ZonedDateTime zdt = ZonedDateTime.of(now, ZoneId.systemDefault());
-        long longDate = zdt.toInstant().toEpochMilli();
-        this.setLongCreatedDate(longDate);
-        this.setCreatedDate(now);
-    }
 
 }
