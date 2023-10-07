@@ -7,23 +7,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tbl_learning_passwords")
-public class Password extends AbstractDAO {
+@Table(name = "tbl_learning_configurations")
+public class Configuration extends AbstractDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_password")
-    @SequenceGenerator(name = "id_generator_password", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_configuration")
+    @SequenceGenerator(name = "id_generator_configuration", initialValue = 1)
     private Long id;
 
-    private String hashed;
+    private String key;
 
-    private Long failedAttempt;
+    private String value;
 
 }
