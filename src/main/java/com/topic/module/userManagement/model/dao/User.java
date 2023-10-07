@@ -1,14 +1,11 @@
 package com.topic.module.userManagement.model.dao;
 
 import com.topic.module.userManagement.model.AbstractDAO;
-import com.topic.module.userManagement.model.security.CustomGrantedAuthority;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Entity
 @Getter
@@ -34,6 +31,7 @@ public class User extends AbstractDAO {
     private Boolean isTokenExpired;
     private Boolean isLocked;
 
-    private List<CustomGrantedAuthority> authorities;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Role role;
 
 }

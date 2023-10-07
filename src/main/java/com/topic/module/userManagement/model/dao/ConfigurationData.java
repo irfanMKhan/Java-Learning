@@ -20,4 +20,12 @@ public class ConfigurationData extends AbstractDAO {
     @SequenceGenerator(name = "id_generator_configuration_data", initialValue = 1)
     private Long id;
 
+    private String value;
+
+    private String text;
+
+    private String remarks;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private ConfigurationType configurationType;
 }

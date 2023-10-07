@@ -14,17 +14,19 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tbl_learning_configuration_types")
-public class ConfigurationType extends AbstractDAO {
+@Table(name = "tbl_learning_roles")
+public class Role extends AbstractDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_configuration_type")
-    @SequenceGenerator(name = "id_generator_configuration_type", initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_role")
+    @SequenceGenerator(name = "id_generator_role", initialValue = 1)
     private Long id;
 
     private String name;
+    private String description;
+    private Long priority;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<ConfigurationData> configurationDataList;
+    private List<User> user;
 
 }

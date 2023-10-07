@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public final class CustomGrantedAuthority implements GrantedAuthority {
+public final class UserGrantedAuthority implements GrantedAuthority {
 
     Long id;
     String role;

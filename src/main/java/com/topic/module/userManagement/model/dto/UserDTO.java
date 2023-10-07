@@ -1,7 +1,7 @@
 package com.topic.module.userManagement.model.dto;
 
 import com.topic.module.userManagement.model.AbstractDTO;
-import com.topic.module.userManagement.model.security.CustomGrantedAuthority;
+import com.topic.module.userManagement.model.security.UserGrantedAuthority;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,6 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,25 +31,19 @@ public class UserDTO extends AbstractDTO implements UserDetails {
     private String mobile;
     private String occupation;
     private String companyName;
+
     private Long totalRoles;
     private String roleName;
-    private Boolean isActive;
-    private Boolean isDeleted;
     private Boolean isTokenExpired;
-    private String createdBy;
-    private LocalDateTime createdDate;
-    private String updatedBy;
-    private LocalDateTime updatedDate;
-    private String deletedBy;
-    private LocalDateTime deletedDate;
+
     private String role_xml;
-    private List<CustomGrantedAuthority> authorities;
+    private List<UserGrantedAuthority> authorities;
 
     /**
      * author : MD Irfan Khan;
      * for User Build
      */
-    public UserDTO(Long id, String username, String password, List<CustomGrantedAuthority> authorities) {
+    public UserDTO(Long id, String username, String password, List<UserGrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -62,10 +55,10 @@ public class UserDTO extends AbstractDTO implements UserDetails {
      * build user for authentication
      */
     public static UserDTO build(UserDTO user, List<RoleDTO> roles) {
-        List<CustomGrantedAuthority> authorities = roles.stream()
-                .map(role -> new CustomGrantedAuthority(
+        List<UserGrantedAuthority> authorities = roles.stream()
+                .map(role -> new UserGrantedAuthority(
                                 role.getId(),
-                                role.getRoleName(),
+                                role.getName(),
                                 role.getDescription(),
                                 role.getPriority()
                         )
