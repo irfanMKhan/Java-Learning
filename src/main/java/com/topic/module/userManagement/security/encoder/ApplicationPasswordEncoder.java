@@ -2,7 +2,7 @@ package com.topic.module.userManagement.security.encoder;
 
 
 import com.google.common.hash.Hashing;
-import com.secured.eirportal.utility.message.ErrorMessage;
+import com.topic.module.userManagement.utility.message.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

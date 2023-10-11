@@ -1,15 +1,15 @@
 package com.topic.module.userManagement.security.filter;
 
-import com.secured.eirportal.exception.TokenException;
-import com.secured.eirportal.model.dto.ValidateTokenDTO;
-import com.secured.eirportal.model.payload.request.BucketRequest;
-import com.secured.eirportal.security.utility.RateLimiter;
-import com.secured.eirportal.security.utility.TokenManager;
-import com.secured.eirportal.service.UserService;
-import com.secured.eirportal.utility.constant.JwtVariable;
-import com.secured.eirportal.utility.constant.ServletVariable;
-import com.secured.eirportal.utility.message.ErrorMessage;
-import com.secured.eirportal.utility.message.LogPurpose;
+
+import com.topic.module.userManagement.security.limiter.TokenManager;
+import com.topic.module.userManagement.utility.constant.JwtVariable;
+import com.topic.module.userManagement.utility.constant.ServletVariable;
+import com.topic.module.userManagement.utility.message.ErrorMessage;
+import com.topic.module.userManagement.utility.message.LogPurpose;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,10 +22,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationCo
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedHashMap;

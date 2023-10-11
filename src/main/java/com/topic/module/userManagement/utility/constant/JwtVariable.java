@@ -9,4 +9,5 @@ public class JwtVariable {
     public static final String TOKEN_SECRET_KEY = "red.digital_EIR";
     public static final String SERVLET_REQUEST_HEADER = "Authorization";
     public static final Long EXPIRATION_TIME_TOKEN = TimeUnit.HOURS.toMillis(11L);
+    public static final Long EXPIRATION_TIME_REFRESH_TOKEN = TimeUnit.HOURS.toMillis(11L);
 }

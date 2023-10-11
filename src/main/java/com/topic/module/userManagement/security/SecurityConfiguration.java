@@ -5,6 +5,7 @@ import com.topic.module.userManagement.security.filter.AuthenticationTokenFilter
 import com.topic.module.userManagement.security.handler.ApplicationAccessDeniedHandler;
 import com.topic.module.userManagement.security.handler.AuthenticationEntryPointHandler;
 import com.topic.module.userManagement.security.handler.LoginAttemptHandler;
+import com.topic.module.userManagement.security.limiter.TokenManager;
 import com.topic.module.userManagement.utility.constant.CorsVariable;
 import com.topic.module.userManagement.utility.constant.ServletVariable;
 import lombok.RequiredArgsConstructor;
