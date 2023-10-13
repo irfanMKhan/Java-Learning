@@ -6,6 +6,7 @@ import com.topic.module.userManagement.security.handler.ApplicationAccessDeniedH
 import com.topic.module.userManagement.security.handler.AuthenticationEntryPointHandler;
 import com.topic.module.userManagement.security.handler.LoginAttemptHandler;
 import com.topic.module.userManagement.security.limiter.TokenManager;
+import com.topic.module.userManagement.service.UserService;
 import com.topic.module.userManagement.utility.constant.CorsVariable;
 import com.topic.module.userManagement.utility.constant.ServletVariable;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -30,7 +31,7 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
 public class SecurityConfiguration {
 
     private final UserService userService;
