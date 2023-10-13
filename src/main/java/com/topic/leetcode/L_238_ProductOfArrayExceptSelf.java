@@ -2,7 +2,7 @@ package com.topic.leetcode;
 
 import java.util.Arrays;
 
-public class L_238_ProductofArrayExceptSelf {
+public class L_238_ProductOfArrayExceptSelf {
 
     public int[] productExceptSelf(int[] nums) {
         int prefix = 1;

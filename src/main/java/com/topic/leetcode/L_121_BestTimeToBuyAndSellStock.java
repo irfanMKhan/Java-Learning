@@ -1,6 +1,6 @@
 package com.topic.leetcode;
 
-public class L_121_BestTimetoBuyandSellStock {
+public class L_121_BestTimeToBuyAndSellStock {
     public int maxProfit(int[] prices) {
         int minValue = prices[0];
         int maxProfit = 0;
@@ -10,7 +10,7 @@ public class L_121_BestTimetoBuyandSellStock {
                 minValue = prices[i];
             }
             if ((prices[i] - minValue) > maxProfit) {
-                maxProfit = prices[i]-minValue;
+                maxProfit = prices[i] - minValue;
             }
         }
 

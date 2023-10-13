@@ -1,18 +1,19 @@
 package com.topic.module.userManagement.model;
 
-
 import com.topic.module.userManagement.model.dto.UserDTO;
-import lombok.Data;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class AbstractDAO {
 
