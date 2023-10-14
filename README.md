@@ -36,6 +36,7 @@
 + `Hibernate query cache`
 + `How to create customized object as key in hashmap and how to protect its uniqueness`
 + `Dispatcher servlet,How it is used in spring boot`
++ `What is the difference between Collection, List and Set`
 
 ### Problems
 
