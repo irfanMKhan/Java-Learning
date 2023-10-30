@@ -42,8 +42,21 @@
 
 + `Distribute candies`
 + `Gas station` 
-+ `[Gas station e mentioned chilo two pointer use kora jabe na, greedy e use korte hobe]`
++ `Gas station [two pointer use kora jabe na, greedy e use korte hobe]`
 + `Max rectangle in binary matrix`
++ `BST`
++ `Singly`
++ `Circular`
++ `Doubly`
++ `3 types of linked list and related problems`
++ `Sliding window approach must`
++ `Pegion hole`
++ `Sub of subarray minimums`
++ `Sum*`
++ `Number of island (modified)`
++ `Two Sum without any basic function`
++ `database engine creation`
++ `basic file system creation`
 
 ### CSS
 + `Tailwind CSS`
