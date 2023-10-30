@@ -21,6 +21,9 @@
 + `List`
 + `Map`
 
+##### Qoute By "Leon Bambrick"
++ `There are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.`
+
 ### Questions
 
 + `Loan, mortgage in Banking System`
@@ -61,6 +64,12 @@
 ### CSS
 + `Tailwind CSS`
 + `stitches CSS`
+
+### Casings
++ `snake_case`
++ `kabeb-case`
++ `camelCase`
++ `PascalCase`
 
 
 
