@@ -5,9 +5,9 @@
 # Contributor
 
 - `Irfan Khan`
-- `Mahamudul Hasan`
 - `Samiul`
 - `Subha`
+- `Mahamudul Hasan`
 - `Sadeed`
 
 ### Topic Need To Cover
@@ -21,7 +21,7 @@
 + `List`
 + `Map`
 
-##### Qoute By "Leon Bambrick"
+##### Quote By "Leon Bambrick"
 + `There are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.`
 
 ### Questions
