@@ -5,9 +5,9 @@
 # Contributor
 
 - `Irfan Khan`
-- `Mahamudul Hasan`
 - `Samiul`
 - `Subha`
+- `Mahamudul Hasan`
 - `Sadeed`
 
 ### Topic Need To Cover
@@ -22,7 +22,7 @@
 + `Map`
 + `Marker Interface`
 
-##### Qoute By "Leon Bambrick"
+##### Quote By "Leon Bambrick"
 + `There are 2 hard problems in computer science: cache invalidation, naming things, and off-by-1 errors.`
 
 ### Questions
@@ -40,13 +40,27 @@
 + `Hibernate query cache`
 + `How to create customized object as key in hashmap and how to protect its uniqueness`
 + `Dispatcher servlet,How it is used in spring boot`
++ `What is the difference between Collection, List and Set`
 
 ### Problems
 
 + `Distribute candies`
 + `Gas station` 
-+ `[Gas station e mentioned chilo two pointer use kora jabe na, greedy e use korte hobe]`
++ `Gas station [two pointer use kora jabe na, greedy e use korte hobe]`
 + `Max rectangle in binary matrix`
++ `BST`
++ `Singly`
++ `Circular`
++ `Doubly`
++ `3 types of linked list and related problems`
++ `Sliding window approach must`
++ `Pegion hole`
++ `Sub of subarray minimums`
++ `Sum*`
++ `Number of island (modified)`
++ `Two Sum without any basic function`
++ `database engine creation`
++ `basic file system creation`
 
 ### CSS
 + `Tailwind CSS`

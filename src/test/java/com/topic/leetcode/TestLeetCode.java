@@ -14,6 +14,14 @@ public class TestLeetCode {
     }
 
     @Test
+    public void test_5_LongestPalindromicSubstring() {
+
+        L_5_LongestPalindromicSubstring temp = new L_5_LongestPalindromicSubstring();
+        String res = temp.longestPalindrome("abcb");
+        System.out.println(res);
+    }
+
+    @Test
     public void test_53_MaximumSubArray() {
 
         L_53_MaximumSubArray temp = new L_53_MaximumSubArray();

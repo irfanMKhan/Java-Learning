@@ -36,11 +36,9 @@ public class UserDTO extends AbstractDTO implements UserDetails {
     private String roleName;
     private Boolean isTokenExpired;
 
-    private String role_xml;
     private List<UserGrantedAuthority> authorities;
 
     /**
-     * author : MD Irfan Khan;
      * for User Build
      */
     public UserDTO(Long id, String username, String password, List<UserGrantedAuthority> authorities) {
@@ -51,7 +49,6 @@ public class UserDTO extends AbstractDTO implements UserDetails {
     }
 
     /**
-     * author : MD Irfan Khan
      * build user for authentication
      */
     public static UserDTO build(UserDTO user, List<RoleDTO> roles) {
@@ -84,6 +81,7 @@ public class UserDTO extends AbstractDTO implements UserDetails {
     }
 
     public boolean isEnabled() {
-        return false;
+        return this.getIsActive();
     }
+
 }
