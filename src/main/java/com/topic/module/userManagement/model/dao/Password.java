@@ -19,7 +19,7 @@ public class Password extends AbstractDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_password")
-    @SequenceGenerator(name = "id_generator_password", initialValue = 1)
+    @SequenceGenerator(name = "id_generator_password", initialValue = 1, allocationSize = 1)
     private Long id;
 
     private String hashed;

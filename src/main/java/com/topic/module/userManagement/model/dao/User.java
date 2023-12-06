@@ -17,7 +17,7 @@ public class User extends AbstractDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_user")
-    @SequenceGenerator(name = "id_generator_user", initialValue = 1)
+    @SequenceGenerator(name = "id_generator_user", initialValue = 1, allocationSize = 1)
     private Long id;
 
     private String username;
