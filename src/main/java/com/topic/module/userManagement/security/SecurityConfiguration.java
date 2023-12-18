@@ -107,10 +107,7 @@ public class SecurityConfiguration {
         http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         http.authorizeHttpRequests(request -> request
-                .requestMatchers(ServletVariable.NEED_AUTHORIZATION_URLS).authenticated());
-
-        http.authorizeHttpRequests(request -> request
-                .requestMatchers(ServletVariable.IGNORE_URLS).permitAll()
+                .requestMatchers(ServletVariable.NEED_AUTHORIZATION_URLS).authenticated()
                 .requestMatchers(ServletVariable.OPEN_URLS).permitAll()
                 .anyRequest().permitAll());
 
