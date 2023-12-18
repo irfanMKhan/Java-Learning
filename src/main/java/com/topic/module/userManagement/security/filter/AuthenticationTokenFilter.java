@@ -79,6 +79,9 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
             check = uri.contains(url);
             if (check)
                 break;
+            check = uri.matches(url);
+            if(check)
+                break;
         }
         return check;
     }
