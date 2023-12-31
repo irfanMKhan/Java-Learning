@@ -1,0 +1,366 @@
+package com.mfs.crimson_epms.repository;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Repository
+public class CommonRepository {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
+
+    public int CommonNumberOfRow(String sql) {
+        logger.info(sql);
+        int count = 0;
+        try {
+            count = jdbcTemplate.queryForObject(sql, Integer.class);
+
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            System.out.println("Count Error: " + e.getMessage());
+        }
+
+        return count;
+    }
+
+
+    public Object CommonGetData(String sql) {
+        System.out.println(sql);
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        try {
+            jdbcTemplate.query(sql, new RowCallbackHandler() {
+                public void processRow(ResultSet resultSet) throws SQLException {
+                    Map<String, Object> temp = new HashMap<>();
+                    ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+                    for (int i = 1; i <= resultSetMetaData.getColumnCount(); i++) {
+                        temp.put(resultSetMetaData.getColumnLabel(i), resultSet.getObject(i));
+                    }
+                    list.add(temp);
+                }
+            });
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        return list;
+    }
+
+
+    public boolean CommoInsert(String tbl, Map<String, Object> query, Logger logger) {
+
+        String Query = "";
+        String inQryFields = "";
+        String inQryVal = "";
+        String InsQuery = "";
+        String inQryInit = "";
+        int list_size = query.size();
+        Object[] inputs = new Object[list_size];
+        if (query.size() > 0) {
+            int i = 0;
+            for (Map.Entry<String, Object> entry : query.entrySet()) {
+                inQryFields += entry.getKey() + ",";
+                inQryVal += "'" + entry.getValue() + "',";
+                inQryInit += "?,";
+                inputs[i++] = entry.getValue();
+            }
+            inQryInit = inQryInit.substring(0, inQryInit.trim().length() - 1);
+            InsQuery = "INSERT INTO " + tbl + " (" + inQryFields.substring(0, inQryFields.trim().length() - 1) + ") VALUES (" + inQryInit + ")";
+        }
+
+        logger.info("Insert Query for " + tbl);
+        logger.info(InsQuery);
+        logger.info("Insert Query data: ");
+        try {
+            jdbcTemplate.update(InsQuery, inputs);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
+
+
+    public boolean CommoInsert(String query, Logger logger) {
+        try {
+            jdbcTemplate.update(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
+
+
+    public boolean CommoUpdate(String tbl, Map<String, Object> setQry, Map<String, Object> whereQry, Logger logger) {
+
+        String Query = "";
+        String UpQryWhere = "";
+        String UpQry = "";
+        String UpsQuery = "";
+        int i = 0;
+        int setQrySize = setQry.size();
+        int whereQrySize = whereQry.size();
+        int total_size = setQrySize + whereQrySize;
+        Object[] inputs = new Object[total_size];
+
+        if (setQry.size() > 0) {
+            for (Map.Entry<String, Object> entry : setQry.entrySet()) {
+                UpQry += entry.getKey() + " =?,";
+                inputs[i++] = entry.getValue();
+            }
+            UpQry = UpQry.substring(0, UpQry.trim().length() - 1);
+        }
+
+        if (whereQry.size() > 0) {
+            for (Map.Entry<String, Object> entrys : whereQry.entrySet()) {
+                UpQryWhere += entrys.getKey() + " =? AND ";
+                inputs[i++] = entrys.getValue();
+            }
+            UpQryWhere = " WHERE " + UpQryWhere.substring(0, UpQryWhere.trim().length() - 4);
+        }
+
+        Query = "UPDATE " + tbl + " SET " + UpQry + UpQryWhere;
+        System.out.println(Query);
+        logger.info("Update Query for " + tbl);
+        logger.info(Query);
+        logger.info("Update Query data: ");
+        try {
+            jdbcTemplate.update(Query, inputs);
+            return true;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
+
+    public boolean CommoUpdate(String qry, Logger logger) {
+        try {
+            jdbcTemplate.update(qry);
+            return true;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public boolean commonDelete(String tbl, Map<String, Object> whereQry, Logger logger) {
+        String Query = "";
+        String UpQryWhere = "";
+        int i = 0;
+        int total_size = whereQry.size();
+        Object[] inputs = new Object[total_size];
+
+
+        if (whereQry.size() > 0) {
+            for (Map.Entry<String, Object> entrys : whereQry.entrySet()) {
+                UpQryWhere += entrys.getKey() + " =? AND ";
+                inputs[i++] = entrys.getValue();
+            }
+            UpQryWhere = " WHERE " + UpQryWhere.substring(0, UpQryWhere.trim().length() - 4);
+        }
+
+        Query = "DELETE FROM " + tbl + " " + UpQryWhere;
+        System.out.println(Query);
+        logger.info("Delete Query for " + tbl);
+        logger.info(Query);
+        logger.info("Delete Query data: ");
+
+        try {
+            jdbcTemplate.update(Query, inputs);
+            return true;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
+
+
+    public String getNextId(String sequenceName) {
+        String nextId = null;
+        try {
+            String query = "SELECT  " + sequenceName + ".NEXTVAL FROM   dual";
+            nextId = jdbcTemplate.queryForObject(query, String.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+        }
+        return nextId;
+    }
+
+
+    public String commonInsertGetReturn(String tbl, Map<String, Object> params, Logger logger, String returnColumn) {
+        String generatedValue = "";
+        String inQryFields = "";
+        String inQryInit = "";
+        int list_size = params.size();
+        Object[] inputs = new Object[list_size];
+
+        try {
+            if (params.size() > 0) {
+                int i = 0;
+                for (Map.Entry<String, Object> entry : params.entrySet()) {
+                    inQryFields += entry.getKey() + ",";
+                    inQryInit += "?,";
+                    inputs[i++] = entry.getValue();
+                }
+                inQryInit = inQryInit.substring(0, inQryInit.trim().length() - 1);
+            } else {
+                return "";
+            }
+            String query = "INSERT INTO " + tbl + " (" + inQryFields.substring(0, inQryFields.trim().length() - 1) + ") VALUES (" + inQryInit + ")";
+
+            logger.info("Insert with return query: " + query);
+
+            KeyHolder keyHolder = new GeneratedKeyHolder();
+
+            jdbcTemplate.update(connection -> {
+                PreparedStatement ps = connection
+                        .prepareStatement(query, new String[]{returnColumn});
+                for (int i = 0; i < inputs.length; i++) {
+                    ps.setObject(i + 1, inputs[i]);
+                }
+                return ps;
+            }, keyHolder);
+
+            generatedValue = ((BigDecimal) keyHolder.getKeys().get(returnColumn)).toString();
+            logger.info("Insert with return column: " + returnColumn + " and value: " + generatedValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+        }
+        return generatedValue;
+    }
+
+
+    public boolean commonQuery(String query, Logger logger) {
+        try {
+            int rows = jdbcTemplate.update(query);
+            if (rows > 0)
+                return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+        }
+        return false;
+    }
+
+
+    public Integer commonBulkInsert(String tbl, List<Map<String, Object>> inputList, Logger logger) {
+        if (inputList.isEmpty())
+            return -1;
+        try {
+            Map<String, Object> firstEntry = inputList.get(0);
+            String inQryFields = "";
+            String insQuery = "";
+            String inQryAsk = "";
+            int mapSize = firstEntry.size();
+            if (firstEntry.size() > 0) {
+                for (String key : firstEntry.keySet()) {
+                    inQryFields += key + ",";
+                    inQryAsk += "?,";
+                }
+                inQryAsk = inQryAsk.substring(0, inQryAsk.trim().length() - 1);
+                insQuery = "INSERT INTO " + tbl + " (" + inQryFields.substring(0, inQryFields.trim().length() - 1) + ") VALUES (" + inQryAsk + ")";
+            }
+
+            logger.info("Insert Query for " + tbl);
+            logger.info(insQuery);
+
+            int[] inserted = jdbcTemplate.batchUpdate(
+                    insQuery,
+                    new BatchPreparedStatementSetter() {
+                        public void setValues(PreparedStatement ps, int i) throws SQLException {
+                            int j = 1;
+                            for (String key : firstEntry.keySet()) {
+                                ps.setObject(j, inputList.get(i).get(key));
+                                j++;
+                            }
+                        }
+
+                        public int getBatchSize() {
+                            return inputList.size();
+                        }
+
+                    });
+
+            logger.info("Total inserted: " + inserted.length);
+            return inserted.length;
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+        }
+        return -1;
+    }
+
+    public boolean isDuplicate( String id, List<?> list, String table, String name, String nameValue) {
+        try {
+            String sql = "SELECT * FROM " + table + " WHERE "+name+"='" + nameValue + "'";
+            if (id != null) {
+                sql += " and ID != " + id;
+            }
+            System.err.println(sql);
+            list = jdbcTemplate.query(sql, new BeanPropertyRowMapper(list.getClass()));
+            if (list.size() > 0) {
+                System.err.println("duplicate true");
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            return false;
+        }
+        System.err.println("duplicate false");
+        return false;
+    }
+
+    public boolean isDuplicate( String id, List<?> list, String table, String nameField, String nameValue,String instituteId, Long instituteIdValue) {
+        try {
+            String sql = "SELECT * FROM " + table + " WHERE "+nameField+"='" + nameValue + "' AND  "+instituteId+"='" + instituteIdValue + "'";
+            if (id != null) {
+                sql += " and ID != " + id;
+            }
+            System.err.println(sql);
+            list = jdbcTemplate.query(sql, new BeanPropertyRowMapper(list.getClass()));
+            if (list.size() > 0) {
+                System.err.println("duplicate true");
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage(), e);
+            return false;
+        }
+        System.err.println("duplicate false");
+        return false;
+    }
+
+}
