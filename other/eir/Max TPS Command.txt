@@ -1,0 +1,7 @@
+Max TPS Count => 1. Connect with 168 and 171 server
+                 2. tail -f /data01/monitoringScript/tps_count/log/max_tps_count/total_2022-12-11.txt
+                 3. Find the summition
+
+
+Query : select * from TBL_EIR_TREND_DAILY_REPORT where service_date between '11-DEC-22' and '17-DEC-22' order by service_date asc
+ 

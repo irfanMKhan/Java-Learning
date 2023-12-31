@@ -1,0 +1,687 @@
+pwd- print work directory
+ls- show the files in the directory
+ls~= show the files in the directory
+ls .. = directory one step back
+ls address = show the files in the directory address
+ls / = show the files in the directory in the root
+ls -l = will give as a list
+ls -R = also the subdirectory (recursively)
+ls -a = show all files + hidden
+ls -la --block-size=M ==== will show in Megabite
+ls -lhS ==== will show the size of the files sorted in the directory.
+du -h == will show the size of the directory of that directory 
+  
+cd = go in a directory
+cd "abc def" = folder that contains long name
+cd .. = go back
+cd / = root directory
+cp = copy 
+cp options source destination
+cp -i source destination = ask user wheter to overwrite 
+cp ../(going one directory back)test1.text .(indicate current directory)
+cp -R dir1 dir3(didn't exists before)
+cp poem.txt poem2.txt === will copy in the same directory 
+cp poem.txt /abcd/path === will copy in that directory with the original name
+cp poem.txt /abcd/path/poem2.txt == will copy in that directory with that name
+rm = remove
+rm -rf Directories= delete everything permarently in the folder
+mkdir = make file
+mkdir path/sub_dir = create sub_dir
+mkdir -p names(will create this directory)/mark(sub directory)
+mkdir -p names/{john,tom,bob} = will create john tom and bob
+rmdir = remove directory(that are empty)
+rm -r = remove file that contains files/data
+man ls = show info about ls,, can change ls to any other command
+clear = clear all in window command
+
+cat test.txt === will show the whole file
+more test.txt === will show partial file and u can scroll
+less test.txt === will show partial file and u can scroll
+cat = will echo that you write, then press Crt+D to exit
+ 
+here > is known ass redirectional 
+cat > file_name 
+write the texts..........
+press Crt + D
+cat -b file_name = will add line number to the text file(not blank).
+cat -n file_name = will add line number to the text file(including blank).
+cat -s file_name = will squeze all the blank to single line ( will display only, not edit main file)
+cat -E file_name = will add dollar sign at the end of each line, so we understand end of line(only in display, not real)
+cat file_name = will show the file 
+cat >> file_name = will append the input to existing document.
+cat list1 >> list2 =append list1 into list2 
+cat /etc/passwd | grep bash == will grep the bash user of the system
+
+less filename === will print the filename
+
+
+mv option source destination
+mv file1 file2 = will rename file1 to file2
+mv file1 destination_addr = will move the file in the directory
+mv -i file1 dest_addr = will ask user whether to overwrite
+mv dir1 dir2 = move directory 1 into directory 2.
+mv -v dir1 dir2 = will explain the steps.
+mv *.txt department/marketing== moving all txt file to that directory
+mv deparments/marketing/* . === moving all file of that directory to current file
+
+less file = 
+ls -l = show result as list with timestamp
+touch file_name = create a empty file 
+touch file_name(existing) = will update the timestamp
+touch .file = hidem file  
+in the root directory , mkdir file_name = denied
+sudo mkdir file_name= will create file.
+sudo -s = will go into super user mode.
+nano file_name = will start to create the file 
+ 
+top command is used for realtime dynamic view of the system.
+top= will show details of running process.
+i,s, r
+-u username
+mpstat= cpu usages
+sar -u 5 = show cpu usage every 5 second
+
+PID means process id, every running application have a process id
+pressing s= can change the refresing time
+pressing i= will show only active application
+press k to kill process, give the process id , hit enter.
+pidof process_name = give the pid of the process
+kill process_id = will stop the process
+kill -KILL process_id= will force stop(not recomended)
+kill -9 process_id = will force stop
+ps -ux = will show all the pid of the running process.
+ps -aux = will show all the pid of all users
+ps -U user_name = process run by the user 
+ps -C process_name = show all the instance of that process
+myvar="this is a variable value"
+echo $myvar
+echo -e "some\ttext" = -e recognize the \t 
+echo -e "some\ntext"= same 
+
+-rw-rw-r-- 1 ec2-user ec2-user 61 Jul 13 03:54 t3.text
+first dash represnt the type of file
+next 3 is for owner of the file.
+next 3 is for the group of the file.
+last 3 is for the permission for everybody else
+1= symbolic links of the file
+next is owner of the file
+next is the name of the group
+next is the size of the file
+there is three type of permission, read(r), write(w), executable(x)
+chmod o+x t3.text
+-rw-rw-r-x 1 
+chmod ugo=wx t3.text
+chmod a-rw t3.text = a stands for all
+chmod u+rw,g+rw,o+r t3.text
+ls -ld dir = for viewing directory 
+chmod 000 filename.
+
+r w x
+4 2 1
+
+0-no permission
+1- execute
+2-write
+3-execute+write
+4-read
+5-read+execute
+6-read+write
+7-read+write+execute
+chmod 764 test
++=add a permission
+-=removes the permission
+= sets permission and overrides the permission set earlier
+
+u=user/owner
+g=group
+o=other
+a=all
+
+chmod o=rwx test
+chmod g+x test
+chmod u-r test
+
+chown= changing ownership and group
+chown root test
+chgrp root test(will change group)
+
+script is a text file that contains a sequence of command
+which bash= gives the location of the bash
+//
+nano myscript.sh 
+#! /usr/bin/bash
+ls -l
+string="Hellow World"
+echo $string
+
+./myscript.sh= will run the file
+//
+
+which command/file = gives the file location
+whatis ?? = gives short description of ??
+
+sudo is used for root access.
+cat /etc/passwd= will show all the users
+
+#add user
+sudo useradd mark -m -s /usr/bin/bash -g users -c "my comment"
+-m for directory, -s for default shell, -g for group, -c is for comment.
+
+sudo passwd mark(will update the password)
+sudo userdel mark = will delete, but keep the directory.
+sudo userdel -r mark = will delete all
+groups user_name = will show the group of that user
+
+#su switch user
+su username= will ask the password
+id = will show the id information
+
+#group management(groups, groupadd, groupdel)
+groups = groups that are connected with current user.
+cat /etc/group = all the group in the system
+sudo groupadd group_name
+sudo groupdel group_name
+sudo gpasswd -a user group
+sudo gpasswd -d user group
+sudo gpasswd= will ask password
+#
+whenever you execute a new terminal , a bash rc file is executed.
+#
+viewing resources (du, df, free command)
+df = available spaces and other(file system).
+df -h= human readable
+du command used to estimate and display the disk space used by files.
+du -h= size of that folder
+du -sh = summary+human readable
+sudo du -sh= overcome permission denied problem.
+free command will show , physical, swap memory in the system, also buffer used in the kernel
+free -m = return in megabyte
+free -g = return in giabyte
+cat /proc/meminfo = will show the memory info 
+# 
+Watch can run scripts for command at a regular interval or repeatedly
+watch free -m= will execute the free command in every two second
+Crt + c= to stop
+watch -n 1 free -m= will change the interval into 1
+#
+Head and Tail Command 
+head file_name= print first 10 line of the file
+tail file_name= print last 10 line of the file
+head -n3 file_name= will print first 3 line of the file.
+tail -f file_name = will follow the changes, will show the updated results
+also possible to print multiple file.
+head file1 file2
+#
+find command
+find /home/(directories) -name file_name
+find /home/  *.text= all the file with .text format
+find /home test.* = all the file named test
+find /home/(directories) -mtime -1 = will find files created one day ago.
+-mmin n =last modified n minutes ago
+#
+wc command,
+wc test1.text= 8 12 44, 8 line, 12 word, 44 charcter.
+wc -c test1.text = number of character , 44
+wc -l test1.text = line
+wc -w test1.text = word
+wc -L test1.text = number of character in longest line
+#
+cal command shows conventional calender 
+cal = show calender
+cal 2016 = show full calender of 2016
+cal 2 2014 = show february of 2014
+cal -3 = current & last 2 month
+#date command show the current date & change the date of the system
+date= print current date time
+date -s "11/20/2020 12:48:00" = set the date
+we can also modify the date format using flag
+
+date "+%d/%h/%y"  = day month(h) year
+#
+two to more terminal together
+ls ; pwd
+ls && pwd
+# install
+sudo yum install java
+sudo yum remove java
+#ifconfig is interface configuration, use to view and change of network interface 
+sudo ifconfig eth0(interface) down= this interface will be down
+ifconfig -a
+ifconfig eth0
+
+
+#tar 
+-c create
+v verbose
+f specify
+tar -cvf test.tar test.text= will create a tar file
+tar -xvf test.tar dir1 = will extract the tar file
+tar -czvf test.tar.gz test.text = create a gz tar file
+tar -caf test.tar.gz test.text = create a gz tar file
+#zip and unzip
+
+zip -r dir1zip.zip directory = will create a zip of the directory files
+unzip dir1zip.zip = will extract the file.
+ 
+#grep
+process line by line and print that matches the pattern
+
+grep "keyword" file_name= will print the lines containg the keyword.
+grep -i "keyword" file_name = will make the search case insensitive
+-n for printing line number
+" a b c" can give multiple word here
+grep -n "keyword" file_name1, file_name2, file_name3= will search in multiple file 
+grep -n "keyword" * = all the file in the directory 
+grep -i 'failed\|exception' == will grep the lines contains "failed" or "exception"
+grep -E "[hijk]" poem.txt === will show all the lines that have these h, i,j, k letter
+grep -E "\w{6,}" poem.txt === will show any word that have word length more than 6.
+options ==="-v" will not show the matched lines. 
+
+# history
+history= show all the previos command
+history 5= last 5 command
+history | more= will show page by page
+history | head -10= first 10 command
+!753= execute the 753 number command of history
+Crt+r = will search in the history.
+export HISTTIMEFORMAT='%F %T'= add timestamp to history
+#ls-l=ll
+#sort
+sort filename= will sort
+sort -r filename = reverse sort
+sort -n filename = numerical sort
+sort file1> file2 = sort file1 and keep in file2
+sort -u fileName == will remove the duplicate lines
+
+#lsof(list open files) command
+lsof= opne file on the system
+lsof | wc -l = number of open file
+lsof -u user_name = file opened by that user
+
+#ping 
+ping -c 5 host= 5 ping
+# telnet host port_number.
+nc -v IP PORT
+
+#tcpdump= use for capturing the incoming and outgoing traffic.
+
+sudo tcpdump -i eth0 -v = all the data.
+sudo tcpdump -i eth0 -v host host_ip = capture data of that host_ip
+sudo tcpdump -i eth0 -v dst 10.101.252.118
+sudo tcpdump -i eth0 -v src 10.101.252.118
+sudo tcpdump -i eth0 -v dst 10.101.252.118 and src 192.168.1.1= combineing 
+scaning:
+sudo tcpdump -i eth0 -v net 192.168.1.0/24
+sudo tcpdump -i eth0 -v tcp net 192.168.1.0/24= all the tcp data just
+port specific filter
+tcpdump -i eth0 -v port 80
+tcpdump -i eth0 -v port 80 and 'dest 192.168.0.1' = use '' 
+saving trafic in a pcap file
+tcpdump -w/root/..../traffic.pcap -i eth0 -v 'tcp and net 192.168.0.1/24'
+##
+locate filename= will find the filename(not directories)
+hostname- host/domain name and IP address
+netstat- Network connections, routing tables
+ping-
+ifconfig- getting net config
+nslookup- query DNS lookup name
+telnet- communicate with other hostname
+traceroute- steps that packets take to get to network host.
+# command
+hostname- distplays machine host name and ip
+hostname -d/f/i= different purpose 
+netstat
+netstat-a | less= all the active connections
+nslookup hostname/ipaddress= 
+traceroute ip/name
+
+#users:
+1. Regular user - home directory
+2. Root User - full address[admin/superuser] -sudo
+3. server user - apaache/ servers
+sudo apt-get update= will upadate the list
+sudo apt-get upgrade = will update
+
+#file command
+file [option] [filename]= return type of file
+
+##wargame
+if you want to open "-" type file , you have to use full location.
+example: cat ./-
+2. space in the file name:
+	 cat spaces\ in\ this\ filename
+	 cat 'spaces in this filename'
+3. type of file 
+	 find . -type f | xargs file
+	 find . -type f -size 1033c = will find file size of byte
+	 find . -type f -size 1033c ! -executable
+	 find / -type f -user bandit7 -group bandit6 -size 33c
+
+
+4. uniq command will print the uniq line from consequtive line, first sort it then use uniq
+  	sort data.txt | uniq -c(count)
+5. strings filename = will print the lines/files that is human readable.
+6. base64 option infile,
+	-e = encoding, -d = decode, -n = noerrcheck
+	base64 -d data.txt 
+7. tr means translate.
+	tr [:lowe:] [:uper:] = will translate file from lower to upper class.
+	tr [option] [set1] [set2]
+	tr 'i' 'l'= will replace i with l.
+	tr 'ai' '14'= will replace a with 1, and i with 4
+	 echo "This is it" | tr '[a-zA-Z]' '[n-za-mN-ZA-M]'
+		=Guvf vf vg
+[a-z], which is a shorthand way of typing [abcdefghijklmnopqrstuvwxyz]. 
+The second is [n-za-m], which turns into [nopqrstuvwxyzabcdefghijklm].
+
+##SSH 
+ssh-i private.key username@hostname= will log in using the privat.key 
+ssh usernam@hostname = will ask you the password
+after configuring the ssh, reboot : systemctl restart ssh
+generate key:  ssh-keygen -t rsa = here rsa is type .. can also give the passphrase for 2 step autherntication.
+ssh-copy-id user@host = will save the public key to server.
+go to ssh configuration file: vim /etc/ssh/sshd_config
+9. nc host portnumber
+
+
+#### Bash scripting 
+first we have to specify the terminal.
+#!/bin/bash= this is our first line.
+#variable:
+must be in upperclass.to assign a value, don't use space that much. VARIABLE='SAMI'
+use $NAME
+echo "My name is ${VARIABLE}UL"
+son't start variable name with number.
+#user input
+read -p "Enter you name: " NAME
+#if
+spacing is important
+
+if [ condition ];
+then
+	kjfdskjfdljl
+fi
+# else
+if [condition];
+then
+	kjfdskjfdljl
+else 
+	jfjfejo
+fi
+
+#####if else loop
+mybool=true
+ 
+if [ "$mybool" = true ]; then
+        echo "Hola"
+else
+        echo "No"
+fi
+
+#### test script
+help test
+if [ -d ////];
+then 
+	echo"fdfkookoko"
+####for loop
+#inside for loop use the lowercase variable
+
+for VARIABLE in $(); do
+	jojojdfo
+done
+
+read -p "Enter path" path
+if [ -d $path];
+then
+	echo""
+fi
+
+for file in $path/*; do
+	mv $file destination_address
+done
+####password generator
+read PASS_LENGTH
+
+for p in $(seq 1 5);
+do 
+	openssl rand -base64 48 | cut -c1.$PASS_LENGTH
+done
+
+####function
+function function_name() {
+
+}
+
+## check OS Version
+cat /etc/os-release
+
+## install files
+there is a lot of ways to do it.
+extract the file 
+sudo apt update
+sudo apt install xz-utils
+cp -r directoryOfExtraction /usr/
+
+## ps -ef | grep tomcat 
+####check the version of tomcat
+cd /opt/tomcat/apache-tomcat-9.0.45/bin
+./version.sh
+## find the list of users in the system
+egrep ^[^:]+:[^\!*] /etc/shadow | cut -d: -f1
+##syntax error new line:
+chage --list <user> 
+<> this lines are producing error
+use: chage --list user
+
+##list installed package
+sudo yum list installed | wc -l
+
+###check the status of a service 
+systemctl status csra.service == will check the status of csra.service
+systemctl stop csra.service == will stop the csra.service
+systemctl start csra.service == will start the csra.service 
+
+###size of a file 
+stat -c%s file.txt = will give the size of the file.
+
+###crontab
+crontab -l === will show the list of job
+crontab -e === will open the default editor to edit the crontab
+
+* * * * * command ti execute
+First *= minute(0-59)
+Second * = hour (0-23)
+Third * = day of the month (1-31)
+fourth * = month (1-12)
+fifth * = day of week (0-6)
+0 0 1 * * echo 'Hello' >> /tmp/test.txt ==== will save the 'Hello' in the test.txt file on 1st day
+of every month.
+
+0 0 1,15 * * echo 'Hello' >> /tmp/test.txt ==== will save the 'Hello' in the test.txt file on 1st & 15th day
+of every month.
+
+*/10 * * * * echo 'Hello' >> /tmp/test.txt ==== will save the 'Hello' in the test.txt file on every 10 min
+
+* * */3 * * echo 'Hello' >> /tmp/test.txt ==== will save the 'Hello' in the test.txt file on every minute of every 3rd day
+
+0 0 */3 * * echo 'Hello' >> /tmp/test.txt ==== will save the 'Hello' in the test.txt file on every 3rd day
+
+0 0-5 * * * echo 'Hello' >> /tmp/test.txt ==== will save the 'Hello' in the test.txt file on 00-5:00 hourly
+
+*/30 9-17 * * 1-5 echo 'Hello' >> /tmp/test.txt === will save the file on every 30 min from Mon-Friday on 9am- 5pm
+
+cat /var/log/cron ==== will show the executed cron
+
+#####check the log in history
+cat /var/log/cron== will show the log in history
+###### use before writing a bash script
+#!/bin/bash
+
+###date
+date -d '-1 second' +'%Y-%m-%d %H:%M:%S' ===== will give 2022-02-03 12:10:35
+
+####vim editor
+use ":q!" to quite without saving(may be)
+use ":q" to quite
+use ":wq" to save and quite
+use "i" to insert and "Esc" for stop inserting.
+use "o" to insert new line 
+
+###find the last login infos
+lastlog -u root ==== will give the last login info of the root
+chage --list appadmin ==== will show the last password policies of appadmin
+
+####cut command
+cut -c 5-10 abc.txt ==== will cut the 5th character to 10th 0f abc.txt
+cut -f 1,6 -d ":" /etc/passwd == will cut the 1st and 6th filed of the /etc/passwd file where delimeter is ":"
+
+####egrep range
+abc.txt
+2022-02-03 05:00:01.201
+2022-02-03 05:10:01.321
+2022-02-03 05:14:02.123
+2022-02-03 05:19:05.213
+egrep "2022-02-03 05:[0-1][0-5]" abc.txt
+2022-02-03 05:00:01.201
+2022-02-03 05:10:01.321
+2022-02-03 05:14:02.123
+
+###manual page
+man ls=== will show the manual of the ls.
+
+####check whether ncat is installed
+rpm -qa | grep -i nmap-ncat
+
+####check the last update of OS yum
+yum history ==== will show the last update dates
+Or
+cd /var/log 
+cat yum.log
+
+##check OS version
+cat /etc/os-release
+egrep '^(VERSION|NAME)=' /etc/os-release
+
+###if we don't know exact command. Lets say we want to list. Use the following command, it will find some command
+that may be helpful for listing
+apropos "search for files"
+
+##Useful shortcut
+Use Tab for autocompletion
+press "tab" twice will show all the commands retaled to that word.
+"Ctrl-A" ===move to the begging of the line
+"Ctrl-E" === move to the end of line
+"Ctrl Left arrow" === move left arrow one word
+"Ctrl Right arrow" == move Right arrow one word
+"Ctrl - Shift C" == copy to clip board
+"Ctrl - Shift V"===past from clip board
+###file system
+Common confuguration files" /etc
+common programs or commands: /bin,/sbin
+shared libraries and modules: /lib
+processes that are running on the system: /proc
+kernel or system informations: /sys
+/ === represent the root of the filesystem 
+/home/scott/Picture  ../Document   /home/scott/Document
+###
+space in the filename
+cd "Exercise File"
+cd Exercise\ File
+###jump two directory up
+cd ../../
+##move to previous folder
+cd -
+###wildcards
+*==stands for any number of characters
+?===stands for one character
+mv *.txt department/marketing== moving all txt file to that directory
+mv deparments/marketing/* . === moving all file of that directory to current file
+
+Now lets say there are poem.txt poem1.txt poem2.txt poem3.txt ..
+rm poem?.txt == will remove poem2 & poem3.txt 
+
+###links
+Links are files that reference other files.
+	- Used to avoid having duplicate files
+	-establishes a pointer in one place to a destination in another place.
+hard links points to specific data on the disk
+soft link points to another file
+##soft link 
+ln -s sourceFileName resultingFileName
+here resulting FileName is pointing the source. SO if we edit result we acutaully editing source.
+THese paths are relative. If source file is changed in path, it breaks
+If we move the ResultingFIle then also link breaks. Now if we provide abolute path then this problem solves. But if we move source its breaks.
+
+##Hard Link
+ln source.txt newFile.txt
+now its unbreakable. 
+##Unix philosophy is one tool should do one specific task. Not mulittasking. 
+
+##awk
+	Used to extract specific text according to a rule.
+awk '{print $2}' simpleData.txt === here the default delimeter is tab. so it will print all the second field of each line.
+awk '{print $2 "\t" $1}' simpleData.txt === 2nd and 1st column. 
+##sed
+	used to modify text in a command pipeline or in place
+sed s/Orange/Red simple_data.txt === will substitute all the Orange to Red.
+
+###Redirection 
+Standard Input 0
+Standard Output 1
+Standard Error 2
+ls === will give the standard output
+ls 1> filelist.txt===here 1 directs the output and > defines to redirect to that file.So filelist.txt will have the output of ls. 
+> == will override
+>> === will append
+
+###Path variable
+echo $PATH === will print the path varaible.
+path is a list of path or directories in the file system where shell is look for program or executable files. For example if we give "ls" command
+we don't write the program. Shell looks in the path directory and find the ls program and then execute it. That's why when we install new file, sometimes 
+we need to add location to path variable. 
+"which ls" === will show the location of the "ls" program. 
+to add something to our path variable, we can add to ".bash_profile" file. 
+
+##Operating system and kernel version
+uname -a ====will show the machine informations. 
+
+###CPU infos
+free -h === will show ram
+cat /proc/cpuinfo === show hardware config
+lscpu== show hardware config
+df -h == show hardisk spaces
+du -hd1 / === will show disk usage of root(/) and one level
+lshw | less=== will show all the hardware informations
+ip a === will show the network informations
+
+#package manager
+Debian and similar(Ubuntu, Mint ) use APT
+Red Hat and CentOS use YUM or DNF 
+Fedora use DNF
+Arch use pcman
+
+apt/yum show filename= will show the infos, we can see and then install
+fist use "apt update" before installing something
+
+
+#show current directory
+echo &0
+
+#multiple directory iterate 
+tail -f NEIRRequestPREProcessor_REG{1..10}/log/Info/2022_07_11_14.txt
+
+###rsync
+rsync -av sourceDirectory DestinationDirectory ==== -v will print the results, -a means archive, it will
+copy the folder recursively(mean will also sync the subdirectory and files)
+
+rsync -avzh................................
+
+rsync -av --dry-run sourceDirectory DestinationDirectory =======will not sync anything in real, but will show
+the summary of what if we run it without dry-run
+
+#####check listening port
+lsof -i -P -n | grep LISTEN
+
+
+#####start a jar as service
+nohup java -Xmx1548M -jar Name.jar &
