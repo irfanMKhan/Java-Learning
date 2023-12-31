@@ -1,7 +1,8 @@
 package com.topic.module.userManagement.utility.message;
 
 public final class LogPurpose {
-    public static final String IGNORE_OPEN_URL = "IGNORE_OPEN_URLS FROM :: ";
+    public static final String IGNORE_OPEN_URL = "IGNORE_OPEN_URLS :: ";
+    public static final String FROM_IP = " FROM IP :: ";
 
     public static final String REGISTER_ACCOUNT = "REGISTER_ACCOUNT";
     public static final String SIGN_IN = "SIGN_IN";

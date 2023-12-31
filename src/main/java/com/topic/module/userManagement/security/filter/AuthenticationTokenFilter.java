@@ -78,7 +78,7 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
             String URI = servletRequest.getRequestURI();
             String HOST_IP = servletRequest.getRemoteAddr();
             if (checkOpenURL(URI) || matchOpenURL(URI)) {
-                logger.info(LogPurpose.IGNORE_OPEN_URL + HOST_IP);
+                logger.info(LogPurpose.IGNORE_OPEN_URL + URI + LogPurpose.FROM_IP + HOST_IP);
             } else {
                 String token = getToken(servletRequest);
                 ValidateToken validateToken = tokenManager.validateToken(token);
