@@ -1,6 +1,28 @@
 
 
-ROBI:
+Problem Solving:
+
+https://leetcode.com/problemset/
+https://www.hackerrank.com/dashboard
+https://codeforces.com/problemset/problem/1872/G
+https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3
+https://neetcode.io/roadmap
+https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
+https://www.glassdoor.com/Community/index.htm
+https://www.overleaf.com/latex/templates?q=sop
+https://www.techtarget.com/searchdatamanagement/definition/data-structure#:~:text=A%20data%20structure%20is%20a,they%20need%20in%20appropriate%20ways.
+
+
+University:
+
+https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/6146/
+https://cs.uni-paderborn.de/en/studies/degree-programs/computer-engineering
+https://www.uni-assist.de/en/
+https://www2.daad.de/deutschland/studienangebote/international-programmes/en/detail/5625/#tab_registration
+https://www.mastersportal.com/
+https://www2.daad.de/deutschland/studienangebote/international-programmes/en/result/?q=computer&degree%5B%5D=2&lang%5B%5D=2&fos=3&cert=&admReq=&langExamPC=&scholarshipLC=&langExamLC=&scholarshipSC=&langExamSC=&langDeAvailable=&langEnAvailable=&lvlEn%5B%5D=&modStd%5B%5D=7&cit%5B%5D=&tyi%5B%5D=&ins%5B%5D=&fee=&bgn%5B%5D=&dat%5B%5D=&prep_subj%5B%5D=&prep_degree%5B%5D=&sort=4&dur=&subjects%5B%5D=&limit=10&offset=10&display=list
+https://gradslate.wayne.edu/account/login?cookie=1
+https://portal.ustraveldocs.com/scheduleappointment
 
 
 
