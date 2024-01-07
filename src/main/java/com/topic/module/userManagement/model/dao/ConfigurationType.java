@@ -19,7 +19,7 @@ public class ConfigurationType extends AbstractDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_configuration_type")
-    @SequenceGenerator(name = "id_generator_configuration_type", initialValue = 1)
+    @SequenceGenerator(name = "id_generator_configuration_type", initialValue = 1, allocationSize = 1)
     private Long id;
 
     private String name;

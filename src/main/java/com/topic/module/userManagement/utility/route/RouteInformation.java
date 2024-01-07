@@ -1,7 +1,9 @@
 package com.topic.module.userManagement.utility.route;
 
 public class RouteInformation {
+    public static final String HOME_ROUTE = "/home";
     public static final String API_ROUTE = "/api";
+    public static final String AUTHENTICATION_ROUTE = API_ROUTE + "/auth";
 
     public static final String TREND_REPORT_ROUTE = "/trend_report";
 
@@ -13,7 +15,6 @@ public class RouteInformation {
 
     public static final String DATABASE_MONITOR_ROUTE = "/monitor";
 
-    public static final String AUTHENTICATION_ROUTE = API_ROUTE + "/auth";
     public static final String REGISTRATION_ROUTE = "/registration";
     public static final String SIGN_IN_ROUTE = "/sign_in";
     public static final String CHANGE_PASSWORD_ROUTE = "/change_password";

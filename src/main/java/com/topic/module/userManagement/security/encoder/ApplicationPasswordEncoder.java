@@ -17,7 +17,7 @@ public class ApplicationPasswordEncoder implements PasswordEncoder {
     }
 
     public String encode(CharSequence rawPassword) {
-        if (rawPassword == null || rawPassword.length() == 0) {
+        if (rawPassword == null || rawPassword.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.PASSWORD_EMPTY);
         } else {
             return Hashing.sha512().hashString(rawPassword, StandardCharsets.UTF_8).toString();
@@ -25,7 +25,7 @@ public class ApplicationPasswordEncoder implements PasswordEncoder {
     }
 
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
-        if (rawPassword == null || rawPassword.length() == 0) {
+        if (rawPassword == null || rawPassword.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.PASSWORD_EMPTY);
         } else if (encodedPassword == null || encodedPassword.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.ENCODED_PASSWORD_EMPTY);

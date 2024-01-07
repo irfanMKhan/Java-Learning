@@ -11,6 +11,7 @@ import com.topic.module.userManagement.utility.constant.CorsVariable;
 import com.topic.module.userManagement.utility.constant.ServletVariable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,15 +19,18 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Arrays;
 import java.util.Collections;
+
 
 @Configuration
 @EnableWebSecurity
@@ -73,6 +77,14 @@ public class SecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    /*
+        below method is not recommended instead permit through filter chain
+     */
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web) -> web.ignoring().requestMatchers(ServletVariable.IGNORE_URLS);
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -83,13 +95,23 @@ public class SecurityConfiguration {
         CorsConfiguration corsConfiguration = getCorsConfiguration();
 
         http.csrf(AbstractHttpConfigurer::disable);
+        http.formLogin(AbstractHttpConfigurer::disable);
+        http.httpBasic(AbstractHttpConfigurer::disable);
 
         http.cors(cors -> cors.configurationSource(request -> corsConfiguration));
+
         http.exceptionHandling(exceptionHandling -> exceptionHandling.accessDeniedHandler(accessDeniedHandler()));
         http.exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(authenticationEntryPoint()));
+
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.authorizeHttpRequests(request -> request.requestMatchers(ServletVariable.OPEN_URLS).permitAll().anyRequest().authenticated());
+
+        http.authorizeHttpRequests(request -> request
+                .requestMatchers(ServletVariable.NEED_AUTHORIZATION_URLS).authenticated()
+                .requestMatchers(ServletVariable.OPEN_URLS).permitAll()
+                .anyRequest().permitAll());
+
+
         http.authenticationManager(authenticationManager);
 
         return http.build();

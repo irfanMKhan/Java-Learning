@@ -18,3 +18,9 @@ in java 6 the capacity increases by the amount to 1.5X
 ```
 int newCapacity = (oldCapacity * 3)/2 + 1;
 ```
+
+Which among String or String Buffer should be preferred when there are a lot of updates required to be done in the data?
+```
+Because StringBuilder is quicker than StringBuffer, it is advised to utilize it wherever possible. 
+However, StringBuffer objects are the best choice if thread safety is required.
+```

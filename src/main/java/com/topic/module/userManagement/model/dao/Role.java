@@ -19,7 +19,7 @@ public class Role extends AbstractDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator_role")
-    @SequenceGenerator(name = "id_generator_role", initialValue = 1)
+    @SequenceGenerator(name = "id_generator_role", initialValue = 1, allocationSize = 1)
     private Long id;
 
     private String name;

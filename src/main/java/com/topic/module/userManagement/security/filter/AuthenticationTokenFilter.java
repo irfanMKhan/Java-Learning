@@ -9,6 +9,7 @@ import com.topic.module.userManagement.utility.constant.JwtVariable;
 import com.topic.module.userManagement.utility.constant.ServletVariable;
 import com.topic.module.userManagement.utility.message.ErrorMessage;
 import com.topic.module.userManagement.utility.message.LogPurpose;
+import com.topic.module.userManagement.utility.route.RouteMatcher;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,6 +40,36 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
         this.tokenManager = tokenManager;
     }
 
+    private Boolean checkOpenURL(String uri) {
+        boolean check = Boolean.FALSE;
+        for (String url : ServletVariable.TOKEN_FILTER_OPEN_URLS) {
+            check = uri.contains(url);
+            if (check)
+                break;
+        }
+        return check;
+    }
+
+    private Boolean matchOpenURL(String uri) {
+        boolean check = Boolean.FALSE;
+        for (String url : ServletVariable.TOKEN_FILTER_MATCH_OPEN_URLS) {
+            check = uri.matches(url);
+            if (check)
+                break;
+        }
+        return check;
+    }
+
+    private String getToken(HttpServletRequest httpServletRequest) {
+        String requestHeader = httpServletRequest.getHeader(JwtVariable.SERVLET_REQUEST_HEADER);
+
+        if (StringUtils.hasText(requestHeader) && requestHeader.startsWith(JwtVariable.TOKEN_PREFIX)) {
+            return requestHeader.substring(JwtVariable.TOKEN_SUBSTRING_INDEX);
+        }
+
+        throw new CommonException(ErrorMessage.TOKEN_NOT_FOUND);
+    }
+
     @Override
     protected void doFilterInternal(
             HttpServletRequest servletRequest, HttpServletResponse servletResponse, FilterChain filterChain
@@ -46,7 +77,7 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
         try {
             String URI = servletRequest.getRequestURI();
             String HOST_IP = servletRequest.getRemoteAddr();
-            if (checkOpenURL(URI)) {
+            if (checkOpenURL(URI) || matchOpenURL(URI)) {
                 logger.info(LogPurpose.IGNORE_OPEN_URL + HOST_IP);
             } else {
                 String token = getToken(servletRequest);
@@ -73,23 +104,4 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
         }
     }
 
-    private Boolean checkOpenURL(String uri) {
-        boolean check = Boolean.FALSE;
-        for (String url : ServletVariable.TOKEN_FILTER_OPEN_URLS) {
-            check = uri.contains(url);
-            if (check)
-                break;
-        }
-        return check;
-    }
-
-    private String getToken(HttpServletRequest httpServletRequest) {
-        String requestHeader = httpServletRequest.getHeader(JwtVariable.SERVLET_REQUEST_HEADER);
-
-        if (StringUtils.hasText(requestHeader) && requestHeader.startsWith(JwtVariable.TOKEN_PREFIX)) {
-            return requestHeader.substring(JwtVariable.TOKEN_SUBSTRING_INDEX);
-        }
-
-        throw new CommonException(ErrorMessage.TOKEN_NOT_FOUND);
-    }
 }
