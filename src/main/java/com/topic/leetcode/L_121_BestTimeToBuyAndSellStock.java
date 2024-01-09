@@ -8,6 +8,7 @@ public class L_121_BestTimeToBuyAndSellStock {
         for (int i = 1; i < prices.length; i++) {
             if (prices[i] < minValue) {
                 minValue = prices[i];
+                continue;
             }
             if ((prices[i] - minValue) > maxProfit) {
                 maxProfit = prices[i] - minValue;

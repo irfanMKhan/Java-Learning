@@ -7,7 +7,12 @@ public class TestLeetCode {
     @Test
     public void test_1_TwoSum() {
         L_1_TwoSum twoSum = new L_1_TwoSum();
-        int[] a = twoSum.twoSum(new int[]{1, 2, 3, 4, 5}, 6);
+        int[] a = twoSum.twoSum_Map(new int[]{1, 2, 3, 4, 5}, 6);
+        for (int b : a) {
+            System.out.println(b);
+        }
+
+        a = twoSum.twoSum_Regular(new int[]{1, 2, 3, 4, 5}, 6);
         for (int b : a) {
             System.out.println(b);
         }
@@ -41,7 +46,10 @@ public class TestLeetCode {
     public void test_217_ContainsDuplicate() {
 
         L_217_ContainsDuplicate temp = new L_217_ContainsDuplicate();
-        boolean a = temp.containsDuplicate(new int[]{1, 2, 3, 4});
+        boolean a = temp.containsDuplicate_Map(new int[]{1, 2, 3, 4});
+        System.out.println(a);
+
+        a = temp.containsDuplicate_Sort(new int[]{1, 2, 3, 4});
         System.out.println(a);
     }
 
