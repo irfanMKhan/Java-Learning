@@ -2,6 +2,9 @@ package com.topic.module.userManagement.utility.route;
 
 public class RouteInformation {
     public static final String HOME_ROUTE = "/home";
+
+    public static final String SWAGGER_ROUTE = "/swagger-ui";
+    public static final String SWAGGER_API_DOCS_ROUTE ="/v3/api-docs";
     public static final String API_ROUTE = "/api";
     public static final String AUTHENTICATION_ROUTE = API_ROUTE + "/auth";
 

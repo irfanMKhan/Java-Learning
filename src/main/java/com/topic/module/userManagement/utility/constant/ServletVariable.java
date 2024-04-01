@@ -13,6 +13,8 @@ public class ServletVariable {
     public static final String[] TOKEN_FILTER_OPEN_URLS = {
             RouteInformation.AUTHENTICATION_ROUTE + RouteInformation.SIGN_IN_ROUTE,
             RouteInformation.HOME_ROUTE,
+            RouteInformation.SWAGGER_ROUTE,
+            RouteInformation.SWAGGER_API_DOCS_ROUTE
     };
 
     public static final String[] TOKEN_FILTER_MATCH_OPEN_URLS = {

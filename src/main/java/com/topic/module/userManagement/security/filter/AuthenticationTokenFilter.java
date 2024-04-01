@@ -1,7 +1,6 @@
 package com.topic.module.userManagement.security.filter;
 
 
-import com.topic.exception.CommonException;
 import com.topic.module.userManagement.model.security.ValidateToken;
 import com.topic.module.userManagement.security.limiter.TokenManager;
 import com.topic.module.userManagement.service.UserService;
@@ -9,7 +8,6 @@ import com.topic.module.userManagement.utility.constant.JwtVariable;
 import com.topic.module.userManagement.utility.constant.ServletVariable;
 import com.topic.module.userManagement.utility.message.ErrorMessage;
 import com.topic.module.userManagement.utility.message.LogPurpose;
-import com.topic.module.userManagement.utility.route.RouteMatcher;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -74,9 +72,9 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
     protected void doFilterInternal(
             HttpServletRequest servletRequest, HttpServletResponse servletResponse, FilterChain filterChain
     ) throws ServletException, IOException {
+        String URI = servletRequest.getRequestURI();
+        String HOST_IP = servletRequest.getRemoteAddr();
         try {
-            String URI = servletRequest.getRequestURI();
-            String HOST_IP = servletRequest.getRemoteAddr();
             if (checkOpenURL(URI) || matchOpenURL(URI)) {
                 logger.info(LogPurpose.IGNORE_OPEN_URL + URI + LogPurpose.FROM_IP + HOST_IP);
             } else {
@@ -97,7 +95,7 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
                 }
             }
         } catch (Exception exception) {
-            logger.error(ErrorMessage.INTERNAL_FILTER_FAILED + exception.getMessage());
+            logger.error(ErrorMessage.INTERNAL_FILTER_FAILED + URI + LogPurpose.FROM_IP + HOST_IP +" :: exception message :: "+ exception.getMessage());
             throw new CommonException(exception.getMessage());
         } finally {
             filterChain.doFilter(servletRequest, servletResponse);

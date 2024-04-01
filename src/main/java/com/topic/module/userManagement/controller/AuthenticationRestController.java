@@ -1,6 +1,6 @@
 package com.topic.module.userManagement.controller;
 
-import com.topic.exception.CommonException;
+import com.topic.exception.CommonMessageException;
 import com.topic.module.userManagement.model.payload.request.LoginRequest;
 import com.topic.module.userManagement.model.payload.response.MessageResponse;
 import com.topic.module.userManagement.model.payload.response.TokenResponse;
@@ -42,7 +42,6 @@ public class AuthenticationRestController {
         ApplicationLogger.logInfo(Enum.LogType.REQUEST, LogPurpose.REGISTER_ACCOUNT, requestDTO);
 
 
-
         ApplicationLogger.logInfo(Enum.LogType.RESPONSE, LogPurpose.REGISTER_ACCOUNT, CommonMessage.USER_CREATED);
         return new ResponseEntity<>(new MessageResponse<>(CommonMessage.USER_CREATED, null), HttpStatus.CREATED);
     }
@@ -52,7 +51,7 @@ public class AuthenticationRestController {
         ApplicationLogger.logInfo(Enum.LogType.REQUEST, LogPurpose.SIGN_IN, requestDTO);
 
         if (loginHandler.isBlocked(servletRequest)) {
-            throw new CommonException(ErrorMessage.USER_IP_BLOCK);
+            throw new CommonMessageException(ErrorMessage.USER_IP_BLOCK);
         } else {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(requestDTO.getUsername(), requestDTO.getPassword()));
@@ -69,13 +68,12 @@ public class AuthenticationRestController {
         ApplicationLogger.logInfo(Enum.LogType.REQUEST, LogPurpose.CHANGE_PASSWORD, requestDTO);
 
 
-
         if (true) {
 
             ApplicationLogger.logInfo(Enum.LogType.RESPONSE, LogPurpose.CHANGE_PASSWORD, CommonMessage.PASSWORD_CHANGED);
             return new ResponseEntity<>(new MessageResponse<>(CommonMessage.PASSWORD_CHANGED, null), HttpStatus.ACCEPTED);
         } else
-            throw new CommonException(ErrorMessage.BAD_CREDENTIAL);
+            throw new CommonMessageException(ErrorMessage.BAD_CREDENTIAL);
     }
 
 }
