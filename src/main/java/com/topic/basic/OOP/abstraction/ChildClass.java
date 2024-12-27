@@ -1,6 +1,10 @@
 package com.topic.basic.OOP.abstraction;
 
-public class ChildClass extends AbstractionExample implements InheritanceExample{
+public class ChildClass extends AbstractionExample implements InheritanceExample {
+
+    public ChildClass() {
+        super();
+    }
 
     @Override
     public void displayAbstract() {
@@ -9,6 +13,11 @@ public class ChildClass extends AbstractionExample implements InheritanceExample
 
     @Override
     public void displayInterface() {
+
+    }
+
+    @Override
+    public void displayClass() {
 
     }
 

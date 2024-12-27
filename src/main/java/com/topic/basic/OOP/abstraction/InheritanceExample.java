@@ -7,4 +7,13 @@ public interface InheritanceExample {
      */
     void displayInterface();
 
+    /*
+        after java 8 interface can have their own implementation using default keyword
+     */
+    default void displayInterfaceImplementation() {
+        displayInterface();
+    }
+    
+    void displayClass();
+
 }
