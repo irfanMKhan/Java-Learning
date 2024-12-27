@@ -1,6 +1,8 @@
 package com.topic.module.userManagement.security.filter;
 
 
+import com.topic.exception.CommonMessageException;
+import com.topic.exception.CommonStatusException;
 import com.topic.module.userManagement.model.security.ValidateToken;
 import com.topic.module.userManagement.security.limiter.TokenManager;
 import com.topic.module.userManagement.service.UserService;
@@ -65,7 +67,7 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
             return requestHeader.substring(JwtVariable.TOKEN_SUBSTRING_INDEX);
         }
 
-        throw new CommonException(ErrorMessage.TOKEN_NOT_FOUND);
+        throw new CommonMessageException(ErrorMessage.TOKEN_NOT_FOUND);
     }
 
     @Override
@@ -91,12 +93,12 @@ public class AuthenticationTokenFilter extends AuthenticationFilter {
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(servletRequest));
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 } else {
-                    throw new CommonException(validateToken.getMessage());
+                    throw new CommonMessageException(validateToken.getMessage());
                 }
             }
         } catch (Exception exception) {
             logger.error(ErrorMessage.INTERNAL_FILTER_FAILED + URI + LogPurpose.FROM_IP + HOST_IP +" :: exception message :: "+ exception.getMessage());
-            throw new CommonException(exception.getMessage());
+            throw new CommonMessageException(exception.getMessage());
         } finally {
             filterChain.doFilter(servletRequest, servletResponse);
         }
