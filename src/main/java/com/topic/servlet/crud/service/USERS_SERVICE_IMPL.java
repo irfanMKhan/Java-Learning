@@ -5,13 +5,16 @@ import com.topic.servlet.crud.repository.USERS_REPO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
 public class USERS_SERVICE_IMPL implements USERS_SERVICE {
     private final USERS_REPO users_repo;
+
+    Map<Integer,Integer> v = new HashMap<>();
+
+    private final List<Integer> a = new ArrayList<>();
     @Override
     public Integer saveUser(TBL_USERS user){
         TBL_USERS tbl_users = users_repo.save(user);

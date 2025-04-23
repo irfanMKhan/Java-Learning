@@ -10,6 +10,7 @@ import com.topic.module.userManagement.service.UserService;
 import com.topic.module.userManagement.utility.constant.CorsVariable;
 import com.topic.module.userManagement.utility.constant.ServletVariable;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

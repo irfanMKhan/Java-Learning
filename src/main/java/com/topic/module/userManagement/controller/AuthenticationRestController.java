@@ -20,10 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,6 +33,12 @@ public class AuthenticationRestController {
     private final LoginAttemptHandler loginHandler;
 
     private final AuthenticationManager authenticationManager;
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<?> v(@RequestParam("a") String a){
+
+        return ResponseEntity.ok().header("a",a).body(a);
+    }
 
     @PostMapping(RouteInformation.REGISTRATION_ROUTE)
     public ResponseEntity<?> createAccount(@RequestBody @Valid LoginRequest requestDTO) throws Exception {
